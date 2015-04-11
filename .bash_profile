@@ -6,6 +6,10 @@ else
 	export EDITOR='sublime_text --wait';
 fi;
 
+# shell options
+shopt -s cdspell checkwinsize dirspell dotglob globstar histappend;
+set completion-ignore-case on;
+
 # add ssh keys to agent
 {
 	eval $(ssh-agent);
