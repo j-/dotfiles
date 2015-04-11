@@ -11,10 +11,7 @@ shopt -s cdspell checkwinsize dirspell dotglob globstar histappend;
 set completion-ignore-case on;
 
 # add ssh keys to agent
-{
-	eval $(ssh-agent);
-	ssh-add ~/.ssh/*.key;
-} &> /dev/null;
+{ eval $(ssh-agent); ssh-add ~/.ssh/*.key; } &> /dev/null;
 
 # add symlinks in ~/.path to PATH
 mkdir -p ~/.path;
