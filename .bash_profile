@@ -8,6 +8,11 @@ echo 'Adding keys'
 	ssh-add ~/.ssh/*.key;
 } &> /dev/null
 
+# add symlinks in ~/.path to PATH
+for ITEM in $(ls -fbd1 ~/.path/*); do
+	[ -d $ITEM ] && PATH="$ITEM:$PATH"
+done
+
 # import bash aliases if the file exists
 if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
