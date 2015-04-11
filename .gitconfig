@@ -1,0 +1,10 @@
+# http://git-scm.com/docs/git-config
+
+[alias]
+	s = status --short --branch
+	l = log --oneline --decorate=short
+	b = branch --list --verbose
+[push]
+	default = current
+[include]
+	path = .gitconfig.local

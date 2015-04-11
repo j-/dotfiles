@@ -21,10 +21,14 @@ for FILE in "${TOCOPY[@]}"; do
 	ln -s "$PWD/$FILE" "$HOME/$FILE";
 done;
 
-# configure git
+# ensure global include file exists
+gitconfig="$HOME/.gitconfig.local";
+touch "$gitconfig";
+
+# configure global include file
 if which git > /dev/null; then
-	git config --global user.name "$GLOBAL_USERNAME";
-	git config --global user.email "$GLOBAL_USEREMAIL";
+	git config --file="$gitconfig" user.name "$GLOBAL_USERNAME";
+	git config --file="$gitconfig" user.email "$GLOBAL_USEREMAIL";
 fi;
 
 # move bin/ into PATH
