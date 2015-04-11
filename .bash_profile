@@ -2,7 +2,6 @@ export PROMPT_COMMAND=custom_ps1
 export EDITOR="'${PROGRAMW6432}\Sublime Text 2\sublime_text.exe'"
 
 # add ssh keys to agent
-echo 'Adding keys'
 {
 	eval $(ssh-agent);
 	ssh-add ~/.ssh/*.key;
