@@ -8,11 +8,10 @@ export EDITOR="'${PROGRAMW6432}\Sublime Text 2\sublime_text.exe'"
 } &> /dev/null
 
 # add symlinks in ~/.path to PATH
-if [ -d '~/.path' ]; then
-	for ITEM in $(ls -fbd1 ~/.path/*); do
-		[ -d $ITEM ] && PATH="$ITEM:$PATH"
-	done
-fi
+mkdir -p ~/.path
+for ITEM in $(ls -fbd1 ~/.path/*); do
+	[ -d $ITEM ] && PATH="$ITEM:$PATH"
+done
 
 # import bash aliases if the file exists
 if [ -f ~/.bash_aliases ]; then
