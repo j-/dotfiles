@@ -1,4 +1,4 @@
-alias edit="$EDITOR $1"
+alias edit='e'
 alias explore="explorer $1"
 
 alias ls='ls --color=auto'
