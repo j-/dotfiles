@@ -5,9 +5,11 @@ if ! [ -f 'scripts/init.sh' ]; then
 	test "${SHLVL}" == "1" && return || exit 0;
 fi
 
-rm -f "$HOME/.bashrc"       && ln -s "$PWD/.bashrc"       "$HOME/.bashrc"
-rm -f "$HOME/.bash_profile" && ln -s "$PWD/.bash_profile" "$HOME/.bash_profile"
-rm -f "$HOME/.bash_aliases" && ln -s "$PWD/.bash_aliases" "$HOME/.bash_aliases"
+TOCOPY=(.bashrc .bash_profile .bash_aliases);
+for FILE in "${TOCOPY[@]}"; do
+	rm -f "$HOME/$FILE"
+	ln -s "$PWD/$FILE" "$HOME/$FILE"
+done
 
 # move bin/ into PATH
 mkdir -p ~/.path
