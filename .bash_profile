@@ -68,7 +68,7 @@ function custom_ps1 {
 	PS1+="$OPEN$PWD$CLOSE"
 
 	# show git branch
-	if [ "$(test_path_recursive .git)" != "" ]; then
+	if [ -d "$(test_path_recursive .git)" ]; then
 		# try and use git ps1
 		local GITPS1="$(__git_ps1 '%s' 2> /dev/null)"
 		# if we got something back from git ps1
