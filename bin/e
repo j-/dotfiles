@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# From https://github.com/holman/dotfiles/blob/master/bin/e
+
+# USAGE:
+#
+#   $ e # opens the current directory in your editor
+#   $ e /usr/local # opens the specified directory in your editor
+
+if [ $# -eq 0 ]; then
+	exec $EDITOR .
+else
+	exec $EDITOR "$1"
+fi
