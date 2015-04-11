@@ -1,5 +1,10 @@
 export PROMPT_COMMAND=custom_ps1;
-export EDITOR="sublime_text -nw";
+
+if [ -n "$SSH_TTY" ]; then
+	export EDITOR='nano';
+else
+	export EDITOR='sublime_text -nw';
+fi;
 
 # add ssh keys to agent
 {
