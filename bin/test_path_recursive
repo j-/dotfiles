@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Recursively test for the existence of a path in the current directory and then
+#   each ancestor directory until the path is found. Will echo the path when
+#   found. If the path is not found, the function will exit with status 1.
+#
+# @param {String} TEST Path to test the existence of
+#
+# @param {String=} BASE Path to start searching. No trailing slash. $PWD by
+#   default.
+
+TEST=$1;
+BASE=$2;
+
+if [ $# -lt 2 ]; then
+	BASE=$PWD;
+fi;
+
+while [ "$BASE" != "/" ]; do
+	if [ -e "$BASE/$TEST" ]; then
+		echo "$BASE/$TEST";
+		exit 0;
+	else
+		BASE="$(dirname "$BASE")";
+	fi
+done;
+
+exit 1;

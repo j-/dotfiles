@@ -23,15 +23,6 @@ if [ -e "$HOME/.ssh/config" ]; then
 	complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 fi
 
-function pwd_is_repo {
-	git rev-parse --is-inside-work-tree 2> /dev/null > /dev/null
-	if [ $? == 0 ]; then
-		echo true
-	else
-		echo false
-	fi
-}
-
 function short_pwd {
 	# take $PWD
 	# if it starts with $HOME, replace it with ~
@@ -77,7 +68,7 @@ function custom_ps1 {
 	PS1+="$OPEN$PWD$CLOSE"
 
 	# show git branch
-	if [ "$(pwd_is_repo)" == "true" ]; then
+	if [ "$(test_path_recursive .git)" != "" ]; then
 		# try and use git ps1
 		local GITPS1="$(__git_ps1 '%s' 2> /dev/null)"
 		# if we got something back from git ps1
@@ -85,7 +76,7 @@ function custom_ps1 {
 			local BRANCH="$GITPS1"
 		else
 			# fall back to git function
-			local BRANCH="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+			local BRANCH="$(git rev-parse --abbrev-ref HEAD 2> /dev/null || echo ?)"
 		fi
 		# branch component
 		local GIT="$YELLOW$BRANCH$RESET"
