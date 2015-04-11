@@ -1,6 +1,6 @@
 export PROMPT_COMMAND=custom_ps1;
 
-if [ -n "$SSH_TTY" ]; then
+if [ -n "$SSH_TTY" ] || [ "$SHLVL" -gt 1 ]; then
 	export EDITOR='nano';
 else
 	export EDITOR='sublime_text --wait';
