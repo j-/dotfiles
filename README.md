@@ -14,3 +14,9 @@ For example, to add `~/bin` to `$PATH`:
     $ ln -s ~/bin ~/.path/bin
 
 `$PATH` will be updated next time `.bash_profile` is sourced.
+
+## Sublime Text on Windows
+
+Make a directory link in `cmd`:
+
+    > mklink /D "%USERPROFILE%\.path\Sublime Text 2" "%ProgramFiles%\Sublime Text 2"

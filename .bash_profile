@@ -1,5 +1,5 @@
 export PROMPT_COMMAND=custom_ps1
-export EDITOR="'${PROGRAMW6432}\Sublime Text 2\sublime_text.exe'"
+export EDITOR="sublime_text -nw"
 
 # add ssh keys to agent
 {
