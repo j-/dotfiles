@@ -56,7 +56,6 @@ function custom_ps1 {
 	local  OPEN="$BLACK[$RESET";
 	local CLOSE="$BLACK]$RESET";
 	local  TIME="$BLUE\@$RESET";
-	local  USER="$GREEN\u$RESET";
 	local    AT="$YELLOW@$RESET";
 	local  HOST="$GREEN\h$RESET";
 	local   PWD="$PURPLE\w$RESET";
@@ -66,6 +65,13 @@ function custom_ps1 {
 		EXIT="$BLACK$EXIT$RESET";
 	else
 		EXIT="$RESET$EXIT";
+	fi;
+
+	# show root in red
+	if [ "$(id -u)" == "0" ]; then
+		USER="$RED\u$RESET";
+	else
+		USER="$GREEN\u$RESET";
 	fi;
 
 	# construct prompt
