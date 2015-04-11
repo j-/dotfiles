@@ -1,0 +1,3 @@
+# dotfiles
+
+    $ . scripts/init.sh
