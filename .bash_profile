@@ -13,6 +13,11 @@ if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
 fi
 
+# autocomplete ssh hosts
+if [ -e "$HOME/.ssh/config" ]; then
+	complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+fi
+
 function pwd_is_repo {
 	git rev-parse --is-inside-work-tree 2> /dev/null > /dev/null
 	if [ $? == 0 ]; then
