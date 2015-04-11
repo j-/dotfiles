@@ -11,13 +11,7 @@ alias explore='open';
 alias explorer='open';
 
 # list files
-alias ls='ls \
-  --almost-all \
-  --color=auto \
-  --file-type \
-  --group-directories-first \
-  --human-readable \
-  -ov';
+alias ls='ls --almost-all --color=auto --file-type --human-readable -ov';
 alias ll='ls';
 
 # git misspellings
