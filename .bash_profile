@@ -63,6 +63,8 @@ function custom_ps1 {
 	# dim exit code when 0
 	if [ $EXIT == 0 ]; then
 		EXIT="$BLACK$EXIT$RESET";
+	else
+		EXIT="$RESET$EXIT";
 	fi;
 
 	# construct prompt
