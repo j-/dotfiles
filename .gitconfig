@@ -4,6 +4,7 @@
 	s = status --short --branch
 	l = log --oneline --decorate=short
 	b = branch --list --verbose
+	ignore = ! git_ignore
 [push]
 	default = current
 [include]

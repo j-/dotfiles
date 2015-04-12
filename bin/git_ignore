@@ -1,0 +1,9 @@
+#!/bin/bash
+
+GITDIR="$(test_path_recursive .git)";
+REPODIR="$(dirname "$GITDIR")";
+IGNOREPATH="$REPODIR/.gitignore";
+
+for TOIGNORE in "$@"; do
+	echo "$TOIGNORE" >> "$IGNOREPATH";
+done;
