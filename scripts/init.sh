@@ -15,7 +15,7 @@ if [ -z "$GLOBAL_USEREMAIL" ]; then
 	export GLOBAL_USEREMAIL="$useremail";
 fi;
 
-TOCOPY=(.bashrc .bash_profile .bash_aliases .gitconfig);
+TOCOPY=(.bashrc .bash_profile .bash_aliases .functions .gitconfig);
 for FILE in "${TOCOPY[@]}"; do
 	rm -f "$HOME/$FILE";
 	ln -s "$PWD/$FILE" "$HOME/$FILE";

@@ -34,19 +34,12 @@ if [ -e "$HOME/.ssh/config" ]; then
 	complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 fi;
 
-function short_pwd {
-	# take $PWD
-	# if it starts with $HOME, replace it with ~
-	# remove trailing slash
-	echo "$PWD/" | sed "s@^$HOME/@~/@" | sed "s/\/\$//";
-}
-
 function custom_ps1 {
 	# fetch exit code of last command
 	local  EXIT="$?";
 
 	# set shell title to current working directory
-	echo -ne "\e]2;$(short_pwd)\a";
+	set_shell_title $(short_pwd)
 
 	# color codes
 	local  RESET="\e[0m";

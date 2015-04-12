@@ -1,0 +1,15 @@
+function command_not_found_handle {
+	echo "Command "'"'$1'"'" not found";
+	return 127;
+}
+
+function set_shell_title {
+	echo -ne "\e]2;$@\a";
+}
+
+function short_pwd {
+	# take $PWD
+	# if it starts with $HOME, replace it with ~
+	# remove trailing slash
+	echo "${PWD}/" | sed "s@^${HOME}/@~/@" | sed "s/\/\$//";
+}
