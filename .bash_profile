@@ -7,8 +7,13 @@ else
 fi;
 
 # shell options
-shopt -s cdspell checkwinsize dirspell dotglob globstar histappend;
+shopt -s cdspell checkwinsize dotglob histappend;
 set completion-ignore-case on;
+
+# windows doesn't like these options
+if [[ "$(uname)" != MINGW* ]]; then
+	shopt -s dirspell globstar;
+fi;
 
 # add ssh keys to agent
 { eval $(ssh-agent); ssh-add ~/.ssh/*.key; } &> /dev/null;
