@@ -1,7 +1,7 @@
 export PROMPT_COMMAND=custom_ps1;
 
-[ -f ~/.bash_aliases ] && source ~/.bash_aliases;
 [ -f ~/.functions ] && source ~/.functions;
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases;
 
 if [ -n "$SSH_TTY" ] || [ "$SHLVL" -gt 1 ]; then
 	export EDITOR='nano';
