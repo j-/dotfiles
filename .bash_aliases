@@ -2,7 +2,7 @@
 alias edit='e';
 
 # open in file explorer
-if [[ "$(uname)" == MINGW* ]]; then
+if platform win32; then
 	alias open='explorer';
 fi;
 
