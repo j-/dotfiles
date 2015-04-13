@@ -1,7 +1,7 @@
 #!/bin/bash
 
 platform=;
-uname="$(uname --kernel-name)";
+uname="$(uname)";
 
 if [[ "${uname}" == MINGW* ]] || [[ "${uname}" == CYGWIN* ]]; then
 	platform='win32';
