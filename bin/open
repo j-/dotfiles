@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cmd=;
+
+if platform win32; then
+	cmd='explorer';
+elif platform linux; then
+	cmd='xdg-open';
+else
+	cmd='/bin/open';
+fi;
+
+if [ $# -eq 0 ]; then
+	exec $cmd .;
+else
+	exec $cmd $@;
+fi;

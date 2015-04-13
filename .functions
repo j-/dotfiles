@@ -14,30 +14,6 @@ function short_pwd {
 	echo "${PWD}/" | sed "s@^${HOME}/@~/@" | sed "s/\/\$//";
 }
 
-function platform {
-	local platform;
-	local uname="$(uname --kernel-name)";
-	# determine platform
-	if [[ "${uname}" == MINGW* ]] || [[ "${uname}" == CYGWIN* ]]; then
-		platform='win32';
-	elif [[ "${uname}" == 'Linux' ]]; then
-		platform='linux';
-	elif [[ "${uname}" == 'Darwin' ]]; then
-		platform='darwin';
-	else
-		echo 'Kernel name unrecognized: ' $uname >&2;
-		return 127;
-	fi;
-	# output
-	if [ -z "$#" ]; then
-		echo "$platform";
-	elif [ "$platform" == "$1" ]; then
-		return 0;
-	else
-		return 1;
-	fi;
-}
-
 # from mathiasbynens/dotfiles .functions
 function dataurl {
 	local mimeType=$(file -b --mime-type "$1");

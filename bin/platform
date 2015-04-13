@@ -1,0 +1,23 @@
+#!/bin/bash
+
+platform=;
+uname="$(uname --kernel-name)";
+
+if [[ "${uname}" == MINGW* ]] || [[ "${uname}" == CYGWIN* ]]; then
+	platform='win32';
+elif [[ "${uname}" == 'Linux' ]]; then
+	platform='linux';
+elif [[ "${uname}" == 'Darwin' ]]; then
+	platform='darwin';
+else
+	echo 'Kernel name unrecognized: ' $uname >&2;
+	exit 127;
+fi;
+
+if [ $# -eq 0 ]; then
+	echo "$platform";
+elif [ "$platform" == "$1" ]; then
+	exit 0;
+else
+	exit 1;
+fi;

@@ -1,11 +1,6 @@
 # editor
 alias edit='e';
 
-# open in file explorer
-if platform win32; then
-	alias open='explorer';
-fi;
-
 # familiar windows commands
 alias explore='open';
 alias explorer='open';
