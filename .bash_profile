@@ -1,9 +1,14 @@
 export PROMPT_COMMAND=custom_ps1;
 
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases;
+[ -f ~/.functions ] && source ~/.functions;
+
 if [ -n "$SSH_TTY" ] || [ "$SHLVL" -gt 1 ]; then
 	export EDITOR='nano';
-else
+elif platform win32; then
 	export EDITOR='sublime_text --wait';
+else
+	export EDITOR='subl --wait';
 fi;
 
 # shell options
@@ -11,7 +16,7 @@ shopt -s cdspell checkwinsize dotglob histappend;
 set completion-ignore-case on;
 
 # windows doesn't like these options
-if [[ "$(uname)" != MINGW* ]]; then
+if ! platform win32; then
 	shopt -s dirspell globstar;
 fi;
 
@@ -23,11 +28,6 @@ mkdir -p ~/.path;
 for ITEM in $(ls -fbd1p ~/.path/*); do
 	[ -d $ITEM ] && PATH="$ITEM:$PATH";
 done;
-
-# import bash aliases if the file exists
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases;
-fi;
 
 # autocomplete ssh hosts
 if [ -e "$HOME/.ssh/config" ]; then
