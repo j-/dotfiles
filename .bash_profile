@@ -25,7 +25,7 @@ fi;
 
 # add symlinks in ~/.path to PATH
 mkdir -p ~/.path;
-for ITEM in $(ls -fbd1p ~/.path/*); do
+for ITEM in "$(/bin/ls -fbd1 ~/.path/*)"; do
 	[ -d $ITEM ] && PATH="$ITEM:$PATH";
 done;
 
