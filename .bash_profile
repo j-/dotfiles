@@ -20,7 +20,7 @@ fi;
 
 # add symlinks in ~/.path to PATH
 mkdir -p ~/.path;
-for ITEM in $(ls -fbd1 ~/.path/*); do
+for ITEM in $(ls -fbd1p ~/.path/*); do
 	[ -d $ITEM ] && PATH="$ITEM:$PATH";
 done;
 
