@@ -26,7 +26,7 @@ fi;
 # add symlinks in ~/.path to PATH
 mkdir -p ~/.path;
 for ITEM in "$(/bin/ls -fbd1 ~/.path/*)"; do
-	[ -d $ITEM ] && PATH="$ITEM:$PATH";
+	[ -d "$ITEM" ] && PATH="$ITEM:$PATH";
 done;
 
 # autocomplete ssh hosts
