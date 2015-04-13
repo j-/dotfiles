@@ -1,5 +1,11 @@
 export PROMPT_COMMAND=custom_ps1;
 
+# add symlinks in ~/.path to PATH
+mkdir -p ~/.path;
+for ITEM in /bin/ls -fbd1 ~/.path/*; do
+	[ -d "$ITEM" ] && PATH="$ITEM:$PATH";
+done;
+
 [ -f ~/.functions ] && source ~/.functions;
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases;
 
@@ -22,12 +28,6 @@ fi;
 
 # add ssh keys to agent
 { eval $(ssh-agent); ssh-add ~/.ssh/*.key; } &> /dev/null;
-
-# add symlinks in ~/.path to PATH
-mkdir -p ~/.path;
-for ITEM in "$(/bin/ls -fbd1 ~/.path/*)"; do
-	[ -d "$ITEM" ] && PATH="$ITEM:$PATH";
-done;
 
 # autocomplete ssh hosts
 if [ -e "$HOME/.ssh/config" ]; then
