@@ -79,21 +79,17 @@ function custom_ps1 {
 	PS1+="$OPEN$USER$AT$HOST$CLOSE ";
 	PS1+="$OPEN$PWD$CLOSE";
 
-	# show git branch
+	# show repo branch
 	if [ -d "$(test_path_recursive .git)" ]; then
-		# try and use git ps1
-		local GITPS1="$(__git_ps1 '%s' 2> /dev/null)";
-		# if we got something back from git ps1
-		if [ "$GITPS1" != "" ]; then
-			local BRANCH="$GITPS1";
-		else
-			# fall back to git function
-			local BRANCH="$(git rev-parse --abbrev-ref HEAD 2> /dev/null || echo ?)";
-		fi
-		# branch component
-		local GIT="$YELLOW$BRANCH$RESET";
-		# add to prompt
-		PS1+=" $OPEN$GIT$CLOSE";
+		local GITBRANCH="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null)";
+		if [ "${GITBRANCH}" != "" ]; then
+			PS1+=" ${OPEN}${YELLOW}${GITBRANCH}${RESET}${CLOSE}";
+		fi;
+	elif [ -d "$(test_path_recursive .hg)" ]; then
+		local HGBRANCH="$(hg id -b 2> /dev/null)";
+		if [ "${HGBRANCH}" != "" ]; then
+			PS1+=" ${OPEN}${YELLOW}${HGBRANCH}${RESET}${CLOSE}";
+		fi;
 	fi;
 
 	# finish with \$ which shows # as root and $ otherwise
