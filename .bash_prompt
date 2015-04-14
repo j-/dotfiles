@@ -25,8 +25,8 @@ function custom_ps1 {
 	local   PWD="${PURPLE}\w${RESET}";
 
 	# dim exit code when 0
-	if [ ${EXIT} == 0 ]; then
-		EXIT="${BLACK}${EXIT}${RESET}";
+	if [ -z ${EXIT} ] || [ ${EXIT} == 0 ]; then
+		EXIT="${BLACK}0${RESET}";
 	else
 		EXIT="${RESET}${EXIT}";
 	fi;
