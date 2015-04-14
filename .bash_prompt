@@ -2,7 +2,7 @@ export PROMPT_COMMAND=custom_ps1;
 
 function custom_ps1 {
 	# fetch exit code of last command
-	local  EXIT="$?";
+	local  EXIT="${?}";
 
 	# set shell title to current working directory
 	set_shell_title $(short_pwd)
@@ -17,33 +17,33 @@ function custom_ps1 {
 	local PURPLE="\e[0;35m";
 
 	# prompt components
-	local  OPEN="$BLACK[$RESET";
-	local CLOSE="$BLACK]$RESET";
-	local  TIME="$BLUE\@$RESET";
-	local    AT="$YELLOW@$RESET";
-	local  HOST="$GREEN\h$RESET";
-	local   PWD="$PURPLE\w$RESET";
+	local  OPEN="${BLACK}[${RESET}";
+	local CLOSE="${BLACK}]${RESET}";
+	local  TIME="${BLUE}\@${RESET}";
+	local    AT="${YELLOW}@${RESET}";
+	local  HOST="${GREEN}\h${RESET}";
+	local   PWD="${PURPLE}\w${RESET}";
 
 	# dim exit code when 0
-	if [ $EXIT == 0 ]; then
-		EXIT="$BLACK$EXIT$RESET";
+	if [ ${EXIT} == 0 ]; then
+		EXIT="${BLACK}${EXIT}${RESET}";
 	else
-		EXIT="$RESET$EXIT";
+		EXIT="${RESET}${EXIT}";
 	fi;
 
 	# show root in red
 	if [ "$(id -u)" == "0" ]; then
-		USER="$RED\u$RESET";
+		USER="${RED}\u${RESET}";
 	else
-		USER="$GREEN\u$RESET";
+		USER="${GREEN}\u${RESET}";
 	fi;
 
 	# construct prompt
 	PS1="\n";
-	PS1+="$EXIT ";
-	PS1+="$OPEN$TIME$CLOSE ";
-	PS1+="$OPEN$USER$AT$HOST$CLOSE ";
-	PS1+="$OPEN$PWD$CLOSE";
+	PS1+="${EXIT} ";
+	PS1+="${OPEN}${TIME}${CLOSE} ";
+	PS1+="${OPEN}${USER}${AT}${HOST}${CLOSE} ";
+	PS1+="${OPEN}${PWD}${CLOSE}";
 
 	# show repo branch
 	if [ -d "$(test_path_recursive .git)" ]; then
