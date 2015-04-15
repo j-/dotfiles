@@ -1,6 +1,7 @@
 PROMPT_COMMAND=custom_prompt;
 EXIT=;
 IS_ROOT=;
+REPO_STATUS=;
 
 function custom_prompt {
 	# fetch exit code of last command
@@ -8,7 +9,16 @@ function custom_prompt {
 	IS_ROOT="$(is_root)";
 
 	# set shell title to current working directory
-	set_shell_title $(short_pwd)
+	set_shell_title $(short_pwd);
+
+	# show repo branch
+	if [ -d "$(test_path_recursive .git)" ]; then
+		REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null || echo ?)";
+	elif [ -d "$(test_path_recursive .hg)" ]; then
+		REPO_STATUS="$(hg id -b 2> /dev/null || echo ?)";
+	else
+		REPO_STATUS=;
+	fi;
 
 	custom_ps1;
 }
@@ -51,17 +61,8 @@ function custom_ps1 {
 	PS1+="${OPEN}${USER}${AT}${HOST}${CLOSE} ";
 	PS1+="${OPEN}${PWD}${CLOSE}";
 
-	# show repo branch
-	if [ -d "$(test_path_recursive .git)" ]; then
-		local GITBRANCH="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null)";
-		if [ "${GITBRANCH}" != "" ]; then
-			PS1+=" ${OPEN}${YELLOW}${GITBRANCH}${RESET}${CLOSE}";
-		fi;
-	elif [ -d "$(test_path_recursive .hg)" ]; then
-		local HGBRANCH="$(hg id -b 2> /dev/null)";
-		if [ "${HGBRANCH}" != "" ]; then
-			PS1+=" ${OPEN}${YELLOW}${HGBRANCH}${RESET}${CLOSE}";
-		fi;
+	if [ "${REPO_STATUS}" != "" ]; then
+		PS1+=" ${OPEN}${YELLOW}${REPO_STATUS}${RESET}${CLOSE}";
 	fi;
 
 	# finish with \$ which shows # as root and $ otherwise
