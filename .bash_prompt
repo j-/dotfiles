@@ -1,9 +1,11 @@
 PROMPT_COMMAND=custom_prompt;
 EXIT=;
+IS_ROOT=;
 
 function custom_prompt {
 	# fetch exit code of last command
 	EXIT="${?}";
+	IS_ROOT="$(is_root)";
 	custom_ps1;
 }
 
@@ -34,7 +36,7 @@ function custom_ps1 {
 	fi;
 
 	# show root in red
-	if [ "$(id -u)" == "0" ]; then
+	if [ ${IS_ROOT} == true ]; then
 		USER="${RED}\u${RESET}";
 	else
 		USER="${GREEN}\u${RESET}";
