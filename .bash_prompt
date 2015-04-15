@@ -1,12 +1,11 @@
 PROMPT_COMMAND=custom_prompt;
 EXIT=;
-IS_ROOT=;
 REPO_STATUS=;
+IS_ROOT="$(is_root)";
 
 function custom_prompt {
 	# fetch exit code of last command
 	EXIT="${?}";
-	IS_ROOT="$(is_root)";
 
 	# set shell title to current working directory
 	set_shell_title $(short_pwd);
