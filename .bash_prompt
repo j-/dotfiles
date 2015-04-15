@@ -1,4 +1,4 @@
-export PROMPT_COMMAND=custom_ps1;
+PROMPT_COMMAND=custom_ps1;
 
 function custom_ps1 {
 	# fetch exit code of last command
@@ -59,3 +59,5 @@ function custom_ps1 {
 	# finish with \$ which shows # as root and $ otherwise
 	PS1+="\n\$ ";
 }
+
+export PROMPT_COMMAND;
