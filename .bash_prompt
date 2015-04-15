@@ -27,8 +27,6 @@ function custom_ps1 {
 	# dim exit code when 0
 	if [ -z ${EXIT} ] || [ ${EXIT} == 0 ]; then
 		EXIT="${BLACK}0${RESET}";
-	else
-		EXIT="${RESET}${EXIT}";
 	fi;
 
 	# show root in red
@@ -39,7 +37,7 @@ function custom_ps1 {
 	fi;
 
 	# construct prompt
-	PS1="\n";
+	PS1="${RESET}\n";
 	PS1+="${EXIT} ";
 	PS1+="${OPEN}${TIME}${CLOSE} ";
 	PS1+="${OPEN}${USER}${AT}${HOST}${CLOSE} ";
