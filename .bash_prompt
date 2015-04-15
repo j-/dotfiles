@@ -1,9 +1,13 @@
-PROMPT_COMMAND=custom_ps1;
+PROMPT_COMMAND=custom_prompt;
+EXIT=;
+
+function custom_prompt {
+	# fetch exit code of last command
+	EXIT="${?}";
+	custom_ps1;
+}
 
 function custom_ps1 {
-	# fetch exit code of last command
-	local  EXIT="${?}";
-
 	# set shell title to current working directory
 	set_shell_title $(short_pwd)
 
