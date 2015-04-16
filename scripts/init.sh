@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOURCE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd );
-HOME_DIR=$(test $# -eq 0 && echo ${HOME} || echo ${1});
+HOME_DIR=$(test ${#} -eq 0 && echo ${HOME} || echo ${1});
 
 if [ ! -d "${HOME_DIR}" ]; then
 	echo "Directory does not exist: ${HOME_DIR}";
@@ -43,8 +43,8 @@ if which git > /dev/null; then
 fi;
 
 # move bin/ into PATH
-mkdir -p ~/.path;
-rm -rf ~/.path/dotfiles_bin;
+mkdir -p "${HOME_DIR}/.path";
+rm -rf "${HOME_DIR}/.path/dotfiles_bin";
 ln -s "${SOURCE_DIR}/bin" "${HOME_DIR}/.path/dotfiles_bin";
 
-source ~/.bashrc;
+source "${HOME_DIR}/.bashrc";
