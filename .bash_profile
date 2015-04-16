@@ -18,7 +18,6 @@ fi;
 
 # shell options
 shopt -s cdspell checkwinsize dotglob histappend;
-set completion-ignore-case on;
 
 # windows doesn't like these options
 if ! platform win32; then
