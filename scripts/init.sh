@@ -1,6 +1,12 @@
 #!/bin/bash
 
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd );
+SOURCE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd );
+HOME_DIR=$(test $# -eq 0 && echo ${HOME} || echo ${1});
+
+if [ ! -d "${HOME_DIR}" ]; then
+	echo "Directory does not exist: ${HOME_DIR}";
+	return 0;
+fi;
 
 # prompt user for name and email address
 if [ -z "$GLOBAL_USERNAME" ]; then
@@ -22,12 +28,12 @@ TOCOPY=(
 );
 
 for FILE in "${TOCOPY[@]}"; do
-	rm -f "$HOME/$FILE";
-	ln -s "$DIR/$FILE" "$HOME/$FILE";
+	rm -f "${HOME_DIR}/${FILE}";
+	ln -s "${SOURCE_DIR}/${FILE}" "${HOME_DIR}/${FILE}";
 done;
 
 # ensure global include file exists
-gitconfig="$HOME/.gitconfig.local";
+gitconfig="${HOME_DIR}/.gitconfig.local";
 touch "$gitconfig";
 
 # configure global include file
@@ -39,6 +45,6 @@ fi;
 # move bin/ into PATH
 mkdir -p ~/.path;
 rm -rf ~/.path/dotfiles_bin;
-ln -s "$DIR/bin" "$HOME/.path/dotfiles_bin";
+ln -s "${SOURCE_DIR}/bin" "${HOME_DIR}/.path/dotfiles_bin";
 
 source ~/.bashrc;
