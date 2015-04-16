@@ -9,13 +9,13 @@ if [ ! -d "${HOME_DIR}" ]; then
 fi;
 
 # prompt user for name and email address
-if [ -z "$GLOBAL_USERNAME" ]; then
+if [ -z "${GLOBAL_USERNAME}" ]; then
 	read -ep "Version control user name: " username;
-	export GLOBAL_USERNAME="$username";
+	export GLOBAL_USERNAME="${username}";
 fi;
-if [ -z "$GLOBAL_USEREMAIL" ]; then
+if [ -z "${GLOBAL_USEREMAIL}" ]; then
 	read -ep "Version control email: " useremail;
-	export GLOBAL_USEREMAIL="$useremail";
+	export GLOBAL_USEREMAIL="${useremail}";
 fi;
 
 TOCOPY=(
@@ -34,12 +34,12 @@ done;
 
 # ensure global include file exists
 gitconfig="${HOME_DIR}/.gitconfig.local";
-touch "$gitconfig";
+touch "${gitconfig}";
 
 # configure global include file
 if which git > /dev/null; then
-	git config --file="$gitconfig" user.name "$GLOBAL_USERNAME";
-	git config --file="$gitconfig" user.email "$GLOBAL_USEREMAIL";
+	git config --file="${gitconfig}" user.name "${GLOBAL_USERNAME}";
+	git config --file="${gitconfig}" user.email "${GLOBAL_USEREMAIL}";
 fi;
 
 # move bin/ into PATH
