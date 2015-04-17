@@ -25,6 +25,7 @@ TOCOPY=(
 	.bashrc
 	.functions
 	.gitconfig
+	.inputrc
 );
 
 for FILE in "${TOCOPY[@]}"; do
