@@ -8,7 +8,7 @@
 # visible bell if one is available. If set to 'audible' (the default), Readline
 # attempts to ring the terminal's bell.
 
-# set bell-style audible
+set bell-style none
 
 
 # If set to 'on', Readline attempts to bind the control characters treated
@@ -21,7 +21,7 @@
 # to indicate their file type. The color definitions are taken from the value of
 # the LS_COLORS environment variable. The default is 'off'.
 
-# set colored-stats off
+set colored-stats on
 
 
 # The string to insert at the beginning of the line when the insert-comment
@@ -41,7 +41,7 @@
 # If set to 'on', Readline performs filename matching and completion in a case-
 # insensitive fashion. The default value is 'off'.
 
-# set completion-ignore-case off
+set completion-ignore-case on
 
 
 # If set to 'on', and completion-ignore-case is enabled, Readline treats hyphens
@@ -281,3 +281,15 @@
 # when listing possible completions. The default is 'off'.
 
 # set visible-stats off
+
+
+################################################################################
+
+
+# Key Bindings
+
+# The `bind -p` command displays Readline function names and bindings in a
+# format that can put directly into an initialization file.
+
+"\e[B": history-search-forward
+"\e[A": history-search-backward
