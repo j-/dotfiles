@@ -4,7 +4,9 @@ function command_not_found_handle {
 }
 
 function set_shell_title {
-	echo -ne "\e]2;$@\a";
+	if [ "${TERM}" == 'xterm' ]; then
+		echo -ne "\e]2;${@}\a";
+	fi;
 }
 
 function short_pwd {
