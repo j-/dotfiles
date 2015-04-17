@@ -8,7 +8,7 @@ done;
 [ -f ~/.bash_aliases ] && source ~/.bash_aliases;
 [ -f ~/.bash_prompt  ] && source ~/.bash_prompt;
 
-if [ -n "$SSH_TTY" ] || [ "$SHLVL" -gt 1 ]; then
+if [ -n "$SSH_TTY" ] || [ "$SHLVL" -gt 1 ] || [ "$TERM" == 'linux' ]; then
 	export EDITOR='nano';
 elif platform win32; then
 	export EDITOR='sublime_text --wait';
