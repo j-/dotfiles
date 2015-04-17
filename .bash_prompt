@@ -8,13 +8,13 @@ function custom_prompt {
 	EXIT="${?}";
 
 	# set shell title to current working directory
-	set_shell_title $(short_pwd);
+	set_shell_title "$(short_pwd)";
 
 	# show repo branch
 	if [ -d "$(test_path_recursive .git)" ]; then
-		REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null || echo ?)";
+		REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null || echo '?')";
 	elif [ -d "$(test_path_recursive .hg)" ]; then
-		REPO_STATUS="$(hg id -b 2> /dev/null || echo ?)";
+		REPO_STATUS="$(hg id -b 2> /dev/null || echo '?')";
 	else
 		REPO_STATUS=;
 	fi;
@@ -47,7 +47,7 @@ function custom_ps1 {
 	fi;
 
 	# show root in red
-	if [ ${IS_ROOT} == true ]; then
+	if [ "${IS_ROOT}" == true ]; then
 		USER="${RED}\u${RESET}";
 	else
 		USER="${GREEN}\u${RESET}";
