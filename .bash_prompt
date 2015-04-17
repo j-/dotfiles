@@ -41,10 +41,13 @@ function custom_ps1 {
 	local  HOST="${GREEN}\h${RESET}";
 	local   PWD="${PURPLE}\w${RESET}";
 	local  USER;
+	local   EXT;
 
 	# dim exit code when 0
 	if [ -z ${EXIT} ] || [ ${EXIT} == 0 ]; then
-		EXIT="${BLACK}0${RESET}";
+		EXT="${BLACK}0${RESET}";
+	else
+		EXT="${EXIT}";
 	fi;
 
 	# show root in red
@@ -56,7 +59,7 @@ function custom_ps1 {
 
 	# construct prompt
 	PS1="${RESET}\n";
-	PS1+="${EXIT} ";
+	PS1+="${EXT} ";
 	PS1+="${OPEN}${TIME}${CLOSE} ";
 	PS1+="${OPEN}${USER}${AT}${HOST}${CLOSE} ";
 	PS1+="${OPEN}${PWD}${CLOSE}";
