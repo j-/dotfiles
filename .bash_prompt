@@ -14,9 +14,11 @@ function custom_prompt {
 
 	# show repo branch
 	if [ -d "$(test_path_recursive .git)" ]; then
-		REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null || echo '?')";
+		REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null)";
+		REPO_STATUS="${REPO_STATUS:-.git}";
 	elif [ -d "$(test_path_recursive .hg)" ]; then
-		REPO_STATUS="$(hg id -b 2> /dev/null || echo '?')";
+		REPO_STATUS="$(hg id -b 2> /dev/null)";
+		REPO_STATUS="${REPO_STATUS:-.hg}";
 	else
 		REPO_STATUS=;
 	fi;
