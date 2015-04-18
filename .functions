@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function command_not_found_handle {
 	echo "Command "'"'$1'"'" not found";
 	return 127;

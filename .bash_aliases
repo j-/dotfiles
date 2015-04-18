@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # editor
 alias edit='e';
 
