@@ -3,16 +3,12 @@
 platform=;
 uname="$(uname)";
 
-if [[ "${uname}" == MINGW* ]] || [[ "${uname}" == CYGWIN* ]]; then
-	platform='win32';
-elif [[ "${uname}" == 'Linux' ]]; then
-	platform='linux';
-elif [[ "${uname}" == 'Darwin' ]]; then
-	platform='darwin';
-else
-	echo "Kernel name unrecognized: ${uname}" >&2;
-	exit 127;
-fi;
+case "${uname}" in
+	MINGW*|CYGWIN*) platform='win32';;
+	Linux) platform='linux';;
+	Darwin) platform='darwin';;
+	*) echo "Kernel name unrecognized: ${uname}" >&2; exit 127;;
+esac;
 
 if [ "${#}" -eq 0 ]; then
 	echo "${platform}";
