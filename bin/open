@@ -10,8 +10,8 @@ else
 	cmd='/bin/open';
 fi;
 
-if [ $# -eq 0 ]; then
-	exec $cmd .;
+if [ "${#}" -eq 0 ]; then
+	exec "${cmd}" .;
 else
-	exec $cmd $@;
+	exec "${cmd}" "${*}";
 fi;

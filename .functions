@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function command_not_found_handle {
-	echo "Command "'"'$1'"'" not found";
+	echo 'Command '"${1}"' not found';
 	return 127;
 }
 
 function set_shell_title {
 	case "${TERM}" in
-		xterm|cygwin) echo -ne "\e]2;${@}\a";;
+		xterm|cygwin) echo -ne "\e]2;${*}\a";;
 	esac;
 }
 
@@ -19,11 +19,12 @@ function short_pwd {
 }
 
 function is_root {
-	local user=$1;
-	if [ $# == 0 ]; then
+	local user;
+	user=${1};
+	if [ ${#} == 0 ]; then
 		user=$(id -u);
 	fi
-	if [ $user == 0 ]; then
+	if [ "$user" == 0 ]; then
 		echo true;
 	else
 		echo false;
@@ -32,9 +33,10 @@ function is_root {
 
 # from mathiasbynens/dotfiles .functions
 function dataurl {
-	local mimeType=$(file -b --mime-type "$1");
-	if [[ $mimeType == text/* ]]; then
+	local mimeType;
+	mimeType=$(file -b --mime-type "${1}");
+	if [[ "${mimeType}" == text/* ]]; then
 		mimeType="${mimeType};charset=utf-8";
 	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+	echo "data:${mimeType};base64,$(openssl base64 -in "${1}" | tr -d '\n')";
 }

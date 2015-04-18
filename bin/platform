@@ -10,13 +10,13 @@ elif [[ "${uname}" == 'Linux' ]]; then
 elif [[ "${uname}" == 'Darwin' ]]; then
 	platform='darwin';
 else
-	echo 'Kernel name unrecognized: ' $uname >&2;
+	echo "Kernel name unrecognized: ${uname}" >&2;
 	exit 127;
 fi;
 
-if [ $# -eq 0 ]; then
-	echo "$platform";
-elif [ "$platform" == "$1" ]; then
+if [ "${#}" -eq 0 ]; then
+	echo "${platform}";
+elif [ "${platform}" == "${1}" ]; then
 	exit 0;
 else
 	exit 1;
