@@ -1,5 +1,7 @@
 # dotfiles
 
+[![master branch build status](https://travis-ci.org/j-/dotfiles.svg?branch=master)](https://travis-ci.org/j-/dotfiles)
+
 ## Installation
 
 ```sh
