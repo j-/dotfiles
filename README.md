@@ -1,5 +1,7 @@
 # dotfiles
 
+![git bash prompt](docs/images/git-bash.png)
+
 ## Installation
 
     $ . scripts/init.sh
