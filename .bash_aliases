@@ -14,3 +14,6 @@ alias ll='ls';
 # git misspellings
 alias gti='git';
 alias got='git';
+
+# be polite
+alias please='sudo !!';
