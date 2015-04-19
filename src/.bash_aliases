@@ -20,3 +20,8 @@ alias please='sudo $(fc -ln -1)';
 
 # quiet
 alias reset='reset -Q';
+
+# changing directories
+alias -- -='cd -'
+alias ..='cd ..'
+alias ~='cd ~'
