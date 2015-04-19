@@ -11,7 +11,7 @@ else
 fi;
 
 if [ "${#}" -eq 0 ]; then
-	exec "${cmd}" .;
+	exec ${cmd} .;
 else
-	exec "${cmd}" "${*}";
+	exec ${cmd} ${*};
 fi;
