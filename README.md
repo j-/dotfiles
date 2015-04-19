@@ -4,7 +4,7 @@
 
 ```sh
 git clone --depth 1 https://github.com/j-/dotfiles
-. dotfiles/scripts/init.sh
+. dotfiles/init.sh
 ```
 
 # Prompt
