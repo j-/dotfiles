@@ -2,7 +2,10 @@
 
 ## Installation
 
-    $ . scripts/init.sh
+```sh
+    $ git clone --depth 1 https://github.com/j-/dotfiles
+    $ . dotfiles/scripts/init.sh
+```
 
 # Prompt
 
