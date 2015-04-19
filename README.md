@@ -1,10 +1,20 @@
 # dotfiles
 
-![git bash prompt](docs/images/git-bash.png)
-
 ## Installation
 
     $ . scripts/init.sh
+
+# Prompt
+
+![git bash prompt](docs/images/git-bash.png)
+
+Features:
+* Previous command exit status
+* Current time
+* User name
+* Host name
+* Current directory
+* Git/Mercurial branch
 
 ## PATH
 
