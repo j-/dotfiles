@@ -9,4 +9,4 @@ env:
     - GLOBAL_USEREMAIL=contact@travis-ci.com
 
 script:
-  - source scripts/init.sh
+  - source init.sh

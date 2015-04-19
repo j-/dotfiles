@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOURCE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd );
+SOURCE_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ./src && pwd );
 HOME_DIR=$(test ${#} -eq 0 && echo ${HOME} || echo ${1});
 
 if [ ! -d "${HOME_DIR}" ]; then
