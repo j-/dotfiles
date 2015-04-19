@@ -2,6 +2,7 @@
 
 PROMPT_COMMAND=custom_prompt;
 EXIT=;
+HAS_GIT_PS1="$(test "$(type -t __git_ps1)" = 'function' && echo true || echo false)";
 REPO_STATUS=;
 IS_ROOT="$(is_root)";
 
@@ -14,7 +15,13 @@ function custom_prompt {
 
 	# show repo branch
 	if [ -d "$(test_path_recursive .git)" ]; then
-		REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null || git rev-parse --abbrev-ref HEAD 2> /dev/null)";
+		if [ "${HAS_GIT_PS1}" == true ]; then
+			# use git ps1 if available
+			REPO_STATUS="$(__git_ps1 '%s' 2> /dev/null)";
+		else
+			# default to git command
+			REPO_STATUS="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)";
+		fi;
 		REPO_STATUS="${REPO_STATUS:-.git}";
 	elif [ -d "$(test_path_recursive .hg)" ]; then
 		REPO_STATUS="$(hg id -b 2> /dev/null)";
