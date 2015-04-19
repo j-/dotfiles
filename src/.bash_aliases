@@ -17,3 +17,6 @@ alias got='git';
 
 # be polite
 alias please='sudo !!';
+
+# quiet
+alias reset='reset -Q';
