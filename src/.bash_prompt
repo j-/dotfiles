@@ -11,7 +11,11 @@ function custom_prompt {
 	EXIT="${?}";
 
 	# set shell title to current working directory
-	set_shell_title "$(short_pwd)";
+	if [ -n "${SSH_TTY}" ]; then
+		set_shell_title "${USER}@$(hostname): $(short_pwd)";
+	else
+		set_shell_title "$(short_pwd)";
+	fi;
 
 	# show repo branch
 	if [ -d "$(test_path_recursive .git)" ]; then
