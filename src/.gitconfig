@@ -9,3 +9,5 @@
 	default = current
 [include]
 	path = .gitconfig.local
+[credential]
+	helper = cache
