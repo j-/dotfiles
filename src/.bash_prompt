@@ -4,7 +4,6 @@ PROMPT_COMMAND=custom_prompt;
 EXIT=;
 HAS_GIT_PS1="$(test "$(type -t __git_ps1)" = 'function' && echo true || echo false)";
 REPO_STATUS=;
-IS_ROOT="$(is_root)";
 
 function custom_prompt {
 	# fetch exit code of last command
@@ -47,6 +46,10 @@ function custom_ps1 {
 	local YELLOW="\e[0;33m";
 	local   BLUE="\e[0;34m";
 	local PURPLE="\e[0;35m";
+	local   CYAN="\e[0;36m";
+	local  WHITE="\e[0;37m";
+
+	local BRIGHT_GREEN="\e[1;32m";
 
 	# prompt components
 	local  OPEN="${BLACK}[${RESET}";
@@ -66,8 +69,10 @@ function custom_ps1 {
 	fi;
 
 	# show root in red
-	if [ "${IS_ROOT}" == true ]; then
+	if [ ${UID} = 0 ]; then
 		USER="${RED}\u${RESET}";
+	elif sudo -n true &> /dev/null; then
+		USER="${BRIGHT_GREEN}\u${RESET}";
 	else
 		USER="${GREEN}\u${RESET}";
 	fi;
