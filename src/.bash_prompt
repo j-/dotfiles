@@ -2,7 +2,7 @@
 
 PROMPT_COMMAND=custom_prompt;
 EXIT=;
-HAS_GIT_PS1="$(test "$(type -t __git_ps1)" = 'function' && echo true || echo false)";
+HAS_GIT_PS1="$(command -v __git_ps1 &> /dev/null && echo true)";
 REPO_STATUS=;
 
 function custom_prompt {
