@@ -17,6 +17,9 @@ alias got='git';
 
 # be polite
 alias please='sudo $(fc -ln -1)';
+alias nosudo='sudo -k';
+alias thanks='nosudo';
+alias thankyou='nosudo';
 
 # quiet
 alias reset='reset -Q';
