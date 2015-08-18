@@ -26,9 +26,6 @@ if ! platform win32; then
 	shopt -s dirspell globstar;
 fi;
 
-# add ssh keys to agent
-{ eval "$(ssh-agent)"; ssh-add ~/.ssh/*.key; } &> /dev/null;
-
 # autocomplete ssh hosts
 if [ -e ~/.ssh/config ]; then
 	complete -o default -o nospace -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
