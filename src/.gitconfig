@@ -5,6 +5,7 @@
 	l = log --oneline --decorate=short
 	b = branch --list --verbose
 	ignore = ! git_ignore
+	git = !git
 [push]
 	default = current
 [include]
