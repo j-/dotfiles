@@ -7,6 +7,7 @@
 	ignore = ! git_ignore
 	git = !git
 	standup = ! git_standup
+	fa = fetch --all
 [push]
 	default = current
 [include]
