@@ -7,7 +7,7 @@ if platform win32; then
 elif platform linux; then
 	cmd='xdg-open';
 else
-	cmd='/bin/open';
+	cmd='/usr/bin/open';
 fi;
 
 if [ "${#}" -eq 0 ]; then
