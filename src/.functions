@@ -8,6 +8,7 @@ function command_not_found_handle {
 function set_shell_title {
 	case "${TERM}" in
 		xterm|cygwin) echo -ne "\e]2;${*}\a";;
+		xterm-256color) echo -ne "\033]0;${*}\007";;
 	esac;
 }
 
