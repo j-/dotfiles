@@ -7,7 +7,10 @@
 	ignore = ! git_ignore
 	git = !git
 	standup = ! git_standup
-	fa = fetch --all
+	fa = fetch --all --prune
+	co = checkout
+	ci = commit
+	cim = commit -m
 [push]
 	default = current
 [include]
