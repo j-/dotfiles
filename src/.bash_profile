@@ -152,3 +152,61 @@ Example:
     ;;
   esac
 }
+
+# Sets prompt style. This prompt is quite simple, showing the exit status of the
+# previous command, the username and hostname, and the current directory.
+set_ps1() {
+  # Get exit status of previous command
+  EXIT="${?}"
+  # Reset any existing formatting
+  PS1='\e[0m'
+  # New line
+  PS1+='\n'
+  # Print exit status
+  if [ "${EXIT}" = 0 ]; then
+    # Dim white
+    PS1+='\e[30;1m''0''\e[0m'
+  else
+    # White
+    PS1+="${EXIT}"
+  fi
+  # Space
+  PS1+=' '
+  # Detect type of user
+  if [ "${UID}" = 0 ]; then
+    # Red for root
+    PS1+='\e[0;31m'
+  elif sudo -n true &> /dev/null; then
+    # Bright green for sudo
+    PS1+='\e[1;32m'
+  else
+    # Green for other users
+    PS1+='\e[0;32m'
+  fi
+  # Print username
+  PS1+='\u'
+  # Print @ in dim green
+  PS1+='\e[32;1m''@'
+  # Print hostname in green
+  PS1+='\e[0;32m''\H'
+  # Space
+  PS1+=' '
+  # Print current directory in magenta
+  PS1+='\e[0;35m''\w'
+  # Print $/# on new line
+  PS1+='\e[0m''\n\$ '
+}
+
+
+ ######   ##        #######  ########     ###    ##        ######
+##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
+##        ##       ##     ## ##     ##  ##   ##  ##       ##
+##   #### ##       ##     ## ########  ##     ## ##        ######
+##    ##  ##       ##     ## ##     ## ######### ##             ##
+##    ##  ##       ##     ## ##     ## ##     ## ##       ##    ##
+ ######   ########  #######  ########  ##     ## ########  ######
+
+
+# If set, the value is executed as a command prior to issuing each primary
+# prompt
+PROMPT_COMMAND=set_ps1
