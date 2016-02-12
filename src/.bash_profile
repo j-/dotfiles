@@ -135,15 +135,15 @@ path() {
     'help')
       echo -n "\
 Usage:
-  path help             Show this message
-  path export           Echo current \$PATH (default)
-  path list             List all entries on new lines
-  path prepend PATH...  Add entries to start of \$PATH
-  path append PATH...   Add entries to end of \$PATH
-  path set PATH...      Replace entries in \$PATH
+  ${FUNCNAME} help             Show this message
+  ${FUNCNAME} export           Echo current \$PATH (default)
+  ${FUNCNAME} list             List all entries on new lines
+  ${FUNCNAME} prepend PATH...  Add entries to start of \$PATH
+  ${FUNCNAME} append PATH...   Add entries to end of \$PATH
+  ${FUNCNAME} set PATH...      Replace entries in \$PATH
 Example:
-  path set /usr/sbin /usr/bin /sbin /bin
-  path add ~/bin
+  ${FUNCNAME} set /usr/sbin /usr/bin /sbin /bin
+  ${FUNCNAME} add ~/bin
 "
     ;;
     *)
