@@ -2,3 +2,6 @@
 language: shell
 
 sudo: required
+
+script:
+  - . scripts/install.sh
