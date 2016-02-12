@@ -75,6 +75,13 @@ set_terminal_title() {
   esac
 }
 
+# Print current directory, replacing home dir with a tilde
+short_pwd() {
+  # If $PWD starts with $HOME, replace it with ~
+  # Remove trailing slash
+  echo "${PWD}/" | sed "s@^${HOME}/@~/@" | sed 's/\/$//'
+}
+
 # List all PATH entries on new lines
 path_list() {
   echo "${PATH}" |tr ':' $'\n'
@@ -195,6 +202,8 @@ set_ps1() {
   PS1+='\e[0;35m''\w'
   # Print $/# on new line
   PS1+='\e[0m''\n\$ '
+  # Update shell title to match PWD
+  set_terminal_title "$(short_pwd)"
 }
 
 # Edit files without blocking
