@@ -15,3 +15,7 @@
 # executes commands from ~/.bashrc, if that file exists. This may be inhibited
 # by using the --norc option. The --rcfile file option will force bash to read
 # and execute commands from file instead of ~/.bashrc.
+
+
+# Source .bash_propfile if it exists
+[ -f ~/.bash_profile ] && . ~/.bash_profile
