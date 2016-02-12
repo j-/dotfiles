@@ -33,6 +33,7 @@
 alias gti='git'
 alias gto='git'
 alias gut='git'
+alias got='git'
 alias gt='git'
 
 # Quiet reset
