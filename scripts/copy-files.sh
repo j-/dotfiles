@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $# = 0 ]]; then
-  echo "Usage: $0 SOURCE DEST" >&2
+if [[ "${#}" = 0 ]]; then
+  echo "Usage: ${0} SOURCE DEST" >&2
   exit 1
 fi
 
@@ -10,8 +10,8 @@ fi
 # Use -maxdepth to avoid looking into folders
 # Copy them into the home directory (-i for safety)
 
-find "$1" \
+find "${1}" \
   -mindepth 1 \
   -maxdepth 1 \
   -type f \
-  -exec cp -i {} "$2" \;
+  -exec cp -i {} "${2}" \;

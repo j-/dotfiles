@@ -59,15 +59,19 @@ alias ~='cd ~'
 
 # Called by bash whenever an invalid command is executed
 command_not_found_handle() {
-  echo 'Command "'"$1"'" not found'
+  echo 'Command "'"${1}"'" not found'
   return 127
 }
 
 # Try and set the terminal's titlebar/tab text
 set_terminal_title() {
-  case "$TERM" in
-    xterm|cygwin) echo -ne "\e]2;$*\a";;
-    xterm-256color) echo -ne "\033]0;$*\007";;
+  case "${TERM}" in
+    xterm|cygwin)
+      echo -ne "\e]2;${*}\a"
+    ;;
+    xterm-256color)
+      echo -ne "\033]0;${*}\007"
+    ;;
   esac
 }
 
