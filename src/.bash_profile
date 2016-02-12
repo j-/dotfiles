@@ -120,7 +120,7 @@ path() {
   shift
 
   case $COMMAND in
-    'add'|'prepend')
+    'prepend')
       path_prepend "${@}"
     ;;
     'append')
