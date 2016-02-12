@@ -47,9 +47,6 @@ alias -- -='cd -'
 alias ..='cd ..'
 alias ~='cd ~'
 
-# Convenience
-alias edit='$EDITOR'
-
 
 ######## ##     ## ##    ##  ######  ######## ####  #######  ##    ##  ######
 ##       ##     ## ###   ## ##    ##    ##     ##  ##     ## ###   ## ##    ##
@@ -200,6 +197,12 @@ set_ps1() {
   PS1+='\e[0m''\n\$ '
 }
 
+# Edit files without blocking
+edit() {
+  # Default argument is current directory
+  $EDITOR "${@:-.}"
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
@@ -216,7 +219,7 @@ PROMPT_COMMAND=set_ps1
 
 # Prioritise editors
 if [ -n "$(command -v subl)" ]; then
-  EDITOR='subl -w'
+  EDITOR='subl -aw'
 elif [ -n "$(command -v nano)" ]; then
   EDITOR='nano'
 fi
