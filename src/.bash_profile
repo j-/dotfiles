@@ -84,7 +84,7 @@ short_pwd() {
 
 # List all PATH entries on new lines
 path_list() {
-  echo "${PATH}" |tr ':' $'\n'
+  echo "${PATH}" | tr ':' $'\n'
 }
 
 # High priority PATH entries
