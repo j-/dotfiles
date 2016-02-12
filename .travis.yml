@@ -2,11 +2,3 @@
 language: shell
 
 sudo: required
-
-env:
-  global:
-    - GLOBAL_USERNAME="Travis CI"
-    - GLOBAL_USEREMAIL=contact@travis-ci.com
-
-script:
-  - source init.sh
