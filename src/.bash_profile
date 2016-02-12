@@ -69,3 +69,81 @@ set_terminal_title() {
     xterm-256color) echo -ne "\033]0;$*\007";;
   esac
 }
+
+# List all PATH entries on new lines
+path_list() {
+  echo "${PATH}" |tr ':' $'\n'
+}
+
+# High priority PATH entries
+path_prepend() {
+  local IFS
+  IFS=':'
+  PATH="${*}:${PATH}"
+}
+
+# Low priority PATH entries
+path_append() {
+  local IFS
+  IFS=':'
+  PATH="${PATH}:${*}"
+}
+
+# Replace the PATH entries
+path_set() {
+  local IFS
+  IFS=':'
+  PATH="${*}"
+}
+
+# Output PATH as-is
+path_export() {
+  echo "${PATH}"
+}
+
+# Expose functions as a single command
+path() {
+  # No arguments given
+  if [ "$#" = 0 ]; then
+    # Print $PATH and exit
+    path_export
+    return
+  fi
+
+  local COMMAND
+  COMMAND=$1
+  shift
+
+  case $COMMAND in
+    'add'|'prepend')
+      path_prepend "${@}"
+    ;;
+    'append')
+      path_append "${@}"
+    ;;
+    'set')
+      path_set "${@}"
+    ;;
+    'list')
+      path_list
+    ;;
+    'help')
+      echo -n "\
+Usage:
+  path help             Show this message
+  path export           Echo current \$PATH (default)
+  path list             List all entries on new lines
+  path prepend PATH...  Add entries to start of \$PATH
+  path append PATH...   Add entries to end of \$PATH
+  path set PATH...      Replace entries in \$PATH
+Example:
+  path set /usr/sbin /usr/bin /sbin /bin
+  path add ~/bin
+"
+    ;;
+    *)
+      path help >&2
+      return 127
+    ;;
+  esac
+}
