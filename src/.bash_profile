@@ -139,6 +139,9 @@ path() {
     'list')
       path_list
     ;;
+    'export')
+      path_export
+    ;;
     'help')
       echo -n "\
 Usage:
