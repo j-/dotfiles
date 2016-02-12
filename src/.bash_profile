@@ -210,3 +210,24 @@ set_ps1() {
 # If set, the value is executed as a command prior to issuing each primary
 # prompt
 PROMPT_COMMAND=set_ps1
+
+
+ ######  ##     ##  #######  ########  ########  ######
+##    ## ##     ## ##     ## ##     ##    ##    ##    ##
+##       ##     ## ##     ## ##     ##    ##    ##
+ ######  ######### ##     ## ########     ##     ######
+      ## ##     ## ##     ## ##           ##          ##
+##    ## ##     ## ##     ## ##           ##    ##    ##
+ ######  ##     ##  #######  ##           ##     ######
+
+
+# Attempt to set all shell opts
+# Ignore any failures
+shopt -s \
+  cdspell \
+  checkwinsize \
+  dirspell \
+  dotglob \
+  globstar \
+  histappend \
+  2&> /dev/null || :
