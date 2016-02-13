@@ -175,6 +175,7 @@ set_ps1() {
   PS1+='\e[0;35m''\w'
   PS1+="${CLOSE}"
   # Print git status in yellow if available
+  # TODO: Check if __git_ps1 exists, too
   if [ "$(__git_ps1)" ]; then
     PS1+="${SEP}"
     PS1+="${OPEN}"
