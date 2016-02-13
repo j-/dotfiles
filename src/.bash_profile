@@ -224,6 +224,16 @@ g() {
   git "${@:-s}"
 }
 
+# Open the given path (or current dir) in a file explorer
+open() {
+  case "$(uname)" in
+    # Convert unix path to Windows style, open in explorer
+    'MINGW'*|'CYGWIN'*) explorer "$(cygpath --windows "${1:-.}")" || :;;
+    'Linux') xdg-open ${*};;
+    'Darwin'|*) /usr/bin/env open ${*};;
+  esac
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
