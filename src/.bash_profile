@@ -135,10 +135,10 @@ set_ps1() {
   # Print exit status
   if [ "${EXIT}" = 0 ]; then
     # Dim white
-    PS1+='\e[30;1m''0''\e[0m'
+    PS1+='\e[30;1m''  0''\e[0m'
   else
-    # White
-    PS1+="${EXIT}"
+    # White. Pad with spaces. Always 3 long.
+    PS1+="$(printf "%.*s${EXIT}" "$((3 - ${#EXIT}))" ' ')"
   fi
   # Space
   PS1+=' '
