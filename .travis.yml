@@ -4,4 +4,4 @@ language: shell
 sudo: required
 
 script:
-  - . scripts/install.sh
+  - yes | . scripts/install.sh
