@@ -215,6 +215,13 @@ edit() {
   $EDITOR "${@:-.}"
 }
 
+# Add arguments to .gitignore, each on a new line
+git_ignore() {
+  local IFS
+  IFS=$'\n'
+  echo "${*}" >> .gitignore
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
