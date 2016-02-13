@@ -302,3 +302,12 @@ shopt -s \
 if [ -n "$(command -v __git_complete)" ]; then
   __git_complete g __git_main
 fi
+
+# Autocomplete hostnames for scp, sftp, ssh
+if [ -e ~/.ssh/config ]; then
+  complete \
+    -o default \
+    -o nospace \
+    -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d ' ' -f2- | tr ' ' $'\n')" \
+    scp sftp ssh
+fi
