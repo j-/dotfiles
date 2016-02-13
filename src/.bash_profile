@@ -210,6 +210,11 @@ mkd() {
   mkdir -p "${1}" && cd "${1}"
 }
 
+# Git shorthand. Outputs status when given no arguments.
+g() {
+  git "${@:-s}"
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
