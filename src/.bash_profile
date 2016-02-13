@@ -145,7 +145,8 @@ set_ps1() {
     PS1+='\e[30;1m''  0''\e[0m'
   else
     # White. Pad with spaces. Always 3 long.
-    PS1+="$(printf "%.*s${EXIT}" "$((3 - ${#EXIT}))" ' ')"
+    PS1+="$(repeat ' ' $(expr 3 - ${#EXIT}))"
+    PS1+="${EXIT}"
   fi
   PS1+="${CLOSE}"
   PS1+="${SEP}"
@@ -245,6 +246,18 @@ open() {
     'Linux') xdg-open ${*};;
     'Darwin'|*) /usr/bin/env open ${*};;
   esac
+}
+
+# Repeat $1, $2 number of times
+repeat() {
+  local PATTERN
+  PATTERN="${1}"
+  local TIMES
+  TIMES="${2:-1}"
+  while [ $TIMES -gt 0 ]; do
+    echo -n "${PATTERN}"
+    let TIMES-=1
+  done
 }
 
 
