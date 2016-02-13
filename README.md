@@ -9,7 +9,7 @@ git clone --depth 1 https://github.com/j-/dotfiles && \
 dotfiles/scripts/install.sh
 ```
 
-# Features
+## Features
 
 * Handy aliases
 * Useful functions
