@@ -5,3 +5,4 @@ sudo: required
 
 script:
   - yes | . scripts/install.sh
+  - . ~/.bash_profile
