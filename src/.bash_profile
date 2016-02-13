@@ -128,10 +128,17 @@ Example:
 set_ps1() {
   # Get exit status of previous command
   EXIT="${?}"
+  # Decorators
+  local OPEN
+  OPEN='\e[30;1m''[''\e[0m'
+  local CLOSE
+  CLOSE='\e[30;1m'']''\e[0m'
+  local SEP
+  SEP=' '
   # Reset any existing formatting
   PS1='\e[0m'
-  # New line
   PS1+='\n'
+  PS1+="${OPEN}"
   # Print exit status
   if [ "${EXIT}" = 0 ]; then
     # Dim white
@@ -140,8 +147,9 @@ set_ps1() {
     # White. Pad with spaces. Always 3 long.
     PS1+="$(printf "%.*s${EXIT}" "$((3 - ${#EXIT}))" ' ')"
   fi
-  # Space
-  PS1+=' '
+  PS1+="${CLOSE}"
+  PS1+="${SEP}"
+  PS1+="${OPEN}"
   # Detect type of user
   if [ "${UID}" = 0 ]; then
     # Red for root
@@ -159,10 +167,12 @@ set_ps1() {
   PS1+='\e[32;1m''@'
   # Print hostname in green
   PS1+='\e[0;32m''\H'
-  # Space
-  PS1+=' '
+  PS1+="${CLOSE}"
+  PS1+="${SEP}"
+  PS1+="${OPEN}"
   # Print current directory in magenta
   PS1+='\e[0;35m''\w'
+  PS1+="${CLOSE}"
   # Print git status in yellow if available
   if [ "$(command -v __git_ps1)" ]; then
     # No need for space, one is added by __git_ps1
