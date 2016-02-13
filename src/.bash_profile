@@ -115,18 +115,14 @@ path_export() {
 
 # Expose functions as a single command
 path() {
-  # No arguments given
-  if [ "$#" = 0 ]; then
-    # Print $PATH and exit
-    path_export
-    return
-  fi
-
   local COMMAND
-  COMMAND=$1
+  COMMAND="${1}"
   shift
 
   case $COMMAND in
+    ''|'export')
+      path_export
+    ;;
     'prepend')
       path_prepend "${@}"
     ;;
@@ -138,9 +134,6 @@ path() {
     ;;
     'list')
       path_list
-    ;;
-    'export')
-      path_export
     ;;
     'help')
       echo -n "\
