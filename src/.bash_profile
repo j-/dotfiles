@@ -82,59 +82,25 @@ short_pwd() {
   echo "${PWD}/" | sed "s@^${HOME}/@~/@" | sed 's/\/$//'
 }
 
-# List all PATH entries on new lines
-path_list() {
-  echo "${PATH}" | tr ':' $'\n'
-}
-
-# High priority PATH entries
-path_prepend() {
-  local IFS
-  IFS=':'
-  PATH="${*}:${PATH}"
-}
-
-# Low priority PATH entries
-path_append() {
-  local IFS
-  IFS=':'
-  PATH="${PATH}:${*}"
-}
-
-# Replace the PATH entries
-path_set() {
-  local IFS
-  IFS=':'
-  PATH="${*}"
-}
-
-# Output PATH as-is
-path_export() {
-  echo "${PATH}"
-}
-
-# Expose functions as a single command
+# Read from or write to the $PATH global
 path() {
   local COMMAND
   COMMAND="${1}"
   shift
-
+  local IFS
+  IFS=':'
   case $COMMAND in
-    ''|'export')
-      path_export
-    ;;
-    'prepend')
-      path_prepend "${@}"
-    ;;
-    'append')
-      path_append "${@}"
-    ;;
-    'set')
-      path_set "${@}"
-    ;;
-    'list')
-      path_list
-    ;;
+    # Output PATH as-is
+    ''|'export') echo "${PATH}";;
+    # List all PATH entries on new lines
+    'list') echo "${PATH}" | tr ':' $'\n';;
+    # High priority PATH entries
+    'prepend') PATH="${@}:${PATH}";;
+    # Low priority PATH entries
+    'append') PATH="${PATH}:${@}";;
+    # Replace the PATH entries
+    'set') PATH="${@}";;
+    # Output usage information
     'help')
       echo -n "\
 Usage:
@@ -149,6 +115,7 @@ Example:
   ${FUNCNAME} add ~/bin
 "
     ;;
+    # Print help text and error out
     *)
       path help >&2
       return 127
