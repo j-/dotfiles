@@ -1,0 +1,22 @@
+# http://git-scm.com/docs/git-config
+
+[alias]
+	s = status --short --branch
+	l = log --oneline --decorate=short
+	b = branch --list --verbose
+	git = !git
+	ignore = !git_ignore
+	standup = !git_standup
+	root = rev-parse --show-toplevel
+	fa = fetch --all --prune
+	co = checkout
+	ci = commit
+	cim = commit -m
+[push]
+	default = current
+[include]
+	path = .gitconfig.local
+[credential]
+	helper = cache
+[core]
+	editor = subl -aw
