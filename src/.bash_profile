@@ -171,7 +171,11 @@ set_ps1() {
   # Print $/# on new line
   PS1+='\e[0m''\n\$ '
   # Update shell title to match PWD
-  set_terminal_title "$(short_pwd)"
+  if [ -n "${SSH_TTY}" ]; then
+    set_terminal_title "${USER}@$(hostname): $(short_pwd)"
+  else
+    set_terminal_title "$(short_pwd)"
+  fi
 }
 
 # Edit files without blocking
