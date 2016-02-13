@@ -205,6 +205,11 @@ get_public_ip() {
   curl -s http://whatismyip.akamai.com/
 }
 
+# Make directory and cd into it
+mkd() {
+  mkdir -p "${1}" && cd "${1}"
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
