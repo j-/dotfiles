@@ -239,6 +239,12 @@ git_standup() {
     ${*}
 }
 
+# System might not have dig installed (i.e. Windows)
+# List of services: http://unix.stackexchange.com/a/128088
+get_public_ip() {
+  curl -s http://whatismyip.akamai.com/
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
