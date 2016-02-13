@@ -236,6 +236,8 @@ elif [ -n "$(command -v nano)" ]; then
   EDITOR='nano'
 fi
 
+VISUAL="${EDITOR}"
+
 
  ######  ##     ##  #######  ########  ########  ######
 ##    ## ##     ## ##     ## ##     ##    ##    ##    ##
