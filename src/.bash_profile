@@ -164,7 +164,7 @@ set_ps1() {
   # Print username
   PS1+='\u'
   # Print @ in dim green
-  PS1+='\e[32;1m''@'
+  PS1+='\e[32;2m''@'
   # Print hostname in green
   PS1+='\e[0;32m''\H'
   PS1+="${CLOSE}"
