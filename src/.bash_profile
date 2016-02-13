@@ -93,7 +93,7 @@ path() {
     # Output PATH as-is
     ''|'export') echo "${PATH}";;
     # List all PATH entries on new lines
-    'list') echo "${PATH}" | tr ':' $'\n';;
+    'list'|'ls') echo "${PATH}" | tr ':' $'\n';;
     # High priority PATH entries
     'prepend') PATH="${@}:${PATH}";;
     # Low priority PATH entries
@@ -106,7 +106,7 @@ path() {
 Usage:
   ${FUNCNAME} help             Show this message
   ${FUNCNAME} export           Echo current \$PATH (default)
-  ${FUNCNAME} list             List all entries on new lines
+  ${FUNCNAME} list, ls         List all entries on new lines
   ${FUNCNAME} prepend PATH...  Add entries to start of \$PATH
   ${FUNCNAME} append PATH...   Add entries to end of \$PATH
   ${FUNCNAME} set PATH...      Replace entries in \$PATH
