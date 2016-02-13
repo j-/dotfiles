@@ -163,6 +163,11 @@ set_ps1() {
   PS1+=' '
   # Print current directory in magenta
   PS1+='\e[0;35m''\w'
+  # Print git status in yellow if available
+  if [ "$(command -v __git_ps1)" ]; then
+    # No need for space, one is added by __git_ps1
+    PS1+='\e[0;33m'"$(__git_ps1)"
+  fi
   # Print $/# on new line
   PS1+='\e[0m''\n\$ '
   # Update shell title to match PWD
