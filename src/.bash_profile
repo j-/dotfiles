@@ -95,7 +95,7 @@ path() {
     # List all PATH entries on new lines
     'list'|'ls') echo "${PATH}" | tr ':' $'\n';;
     # High priority PATH entries
-    'prepend') PATH="${@}:${PATH}";;
+    'prepend'|'add') PATH="${@}:${PATH}";;
     # Low priority PATH entries
     'append') PATH="${PATH}:${@}";;
     # Replace the PATH entries
@@ -104,12 +104,12 @@ path() {
     'help')
       echo -n "\
 Usage:
-  ${FUNCNAME} help             Show this message
-  ${FUNCNAME} export           Echo current \$PATH (default)
-  ${FUNCNAME} list, ls         List all entries on new lines
-  ${FUNCNAME} prepend PATH...  Add entries to start of \$PATH
-  ${FUNCNAME} append PATH...   Add entries to end of \$PATH
-  ${FUNCNAME} set PATH...      Replace entries in \$PATH
+  ${FUNCNAME} help                  Show this message
+  ${FUNCNAME} export                Echo current \$PATH (default)
+  ${FUNCNAME} list, ls              List all entries on new lines
+  ${FUNCNAME} prepend, add PATH...  Add entries to start of \$PATH
+  ${FUNCNAME} append PATH...        Add entries to end of \$PATH
+  ${FUNCNAME} set PATH...           Replace entries in \$PATH
 Example:
   ${FUNCNAME} set /usr/sbin /usr/bin /sbin /bin
   ${FUNCNAME} add ~/bin
