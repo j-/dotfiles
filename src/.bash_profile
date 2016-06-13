@@ -261,6 +261,11 @@ repeat() {
   done
 }
 
+# Makes JavaScript development a bit easier
+run() {
+  npm run "$1" -- "${@:2}"
+}
+
 
  ######   ##        #######  ########     ###    ##        ######
 ##    ##  ##       ##     ## ##     ##   ## ##   ##       ##    ##
