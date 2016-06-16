@@ -12,6 +12,8 @@
 	co = checkout
 	ci = commit
 	cim = commit -m
+	has = branch --list --verbose --contains
+	oldest = rev-list --max-parents=0 HEAD
 [push]
 	default = current
 [include]
