@@ -94,6 +94,8 @@ path() {
     ''|'export') echo "${PATH}";;
     # List all PATH entries on new lines
     'list'|'ls') echo "${PATH}" | tr ':' $'\n';;
+    # Print inputs in PATH format
+    'make') echo "${*}";;
     # High priority PATH entries
     'prepend'|'add') PATH="${*}:${PATH}";;
     # Low priority PATH entries
@@ -112,6 +114,7 @@ Usage:
   ${FUNCNAME} help                  Show this message
   ${FUNCNAME} export                Echo current \$PATH (default)
   ${FUNCNAME} list, ls              List all entries on new lines
+  ${FUNCNAME} make PATH...          Format arguments like \$PATH
   ${FUNCNAME} prepend, add PATH...  Add entries to start of \$PATH
   ${FUNCNAME} append PATH...        Add entries to end of \$PATH
   ${FUNCNAME} remove, rm PATH       Remove entries from \$PATH
