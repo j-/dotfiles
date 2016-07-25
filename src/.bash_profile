@@ -100,10 +100,9 @@ path() {
     'append') PATH="${PATH}:${*}";;
     # Remove unwanted entries
     # From https://ntk.me/2013/05/04/path-environment-variable/
-    'remove'|'rm') PATH="$(echo ":${PATH}:" | sed \
+    'remove'|'rm') PATH="$(echo ":${PATH}:" | sed -r \
       -e "s:\:${1}\::\::g" \
-      -e 's/^://' \
-      -e 's/:$//')";;
+      -e 's/^:|:$//')";;
     # Replace the PATH entries
     'set') PATH="${*}";;
     # Output usage information
