@@ -95,9 +95,9 @@ path() {
     # List all PATH entries on new lines
     'list'|'ls') echo "${PATH}" | tr ':' $'\n';;
     # High priority PATH entries
-    'prepend'|'add') PATH="${@}:${PATH}";;
+    'prepend'|'add') PATH="${*}:${PATH}";;
     # Low priority PATH entries
-    'append') PATH="${PATH}:${@}";;
+    'append') PATH="${PATH}:${*}";;
     # Remove unwanted entries
     # From https://ntk.me/2013/05/04/path-environment-variable/
     'remove'|'rm') PATH="$(echo ":${PATH}:" | sed \
@@ -105,7 +105,7 @@ path() {
       -e 's/^://' \
       -e 's/:$//')";;
     # Replace the PATH entries
-    'set') PATH="${@}";;
+    'set') PATH="${*}";;
     # Output usage information
     'help')
       echo -n "\
