@@ -270,7 +270,7 @@ repeat() {
 
 # Makes JavaScript development a bit easier
 run() {
-  npm run "$1" -s -- "${@:2}"
+  npm run "${1:-start}" -s -- "${@:2}"
 }
 
 
