@@ -101,10 +101,10 @@ path() {
     # Low priority PATH entries
     'append') PATH="${PATH}:${*}";;
     # Remove unwanted entries
-    # From https://ntk.me/2013/05/04/path-environment-variable/
-    'remove'|'rm') PATH="$(echo ":${PATH}:" | sed -r \
-      -e "s:\:${1}\::\::g" \
-      -e 's/^:|:$//')";;
+    'remove'|'rm')
+      IFS=$'\n'
+      PATH=$(path make $(path ls | sed -e "s:^${1}$::m"))
+      ;;
     # Replace the PATH entries
     'set') PATH="${*}";;
     # Output usage information
