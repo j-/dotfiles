@@ -98,6 +98,12 @@ path() {
     'prepend'|'add') PATH="${@}:${PATH}";;
     # Low priority PATH entries
     'append') PATH="${PATH}:${@}";;
+    # Remove unwanted entries
+    # From https://ntk.me/2013/05/04/path-environment-variable/
+    'remove'|'rm') PATH="$(echo ":${PATH}:" | sed \
+      -e "s:\:${1}\::\::g" \
+      -e 's/^://' \
+      -e 's/:$//')";;
     # Replace the PATH entries
     'set') PATH="${@}";;
     # Output usage information
@@ -109,6 +115,7 @@ Usage:
   ${FUNCNAME} list, ls              List all entries on new lines
   ${FUNCNAME} prepend, add PATH...  Add entries to start of \$PATH
   ${FUNCNAME} append PATH...        Add entries to end of \$PATH
+  ${FUNCNAME} remove, rm PATH       Remove entries from \$PATH
   ${FUNCNAME} set PATH...           Replace entries in \$PATH
 Example:
   ${FUNCNAME} set /usr/sbin /usr/bin /sbin /bin
