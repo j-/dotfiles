@@ -17,5 +17,5 @@
 # and execute commands from file instead of ~/.bashrc.
 
 
-# Source .bash_propfile if it exists
+# Source .bash_profile if it exists
 [ -f ~/.bash_profile ] && . ~/.bash_profile
