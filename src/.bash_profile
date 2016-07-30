@@ -47,6 +47,10 @@ alias -- -='cd -'
 alias ..='cd ..'
 alias ~='cd ~'
 
+# Be polite
+alias please='sudo $(fc -ln -1)'
+alias thanks='sudo -k'
+
 
 ######## ##     ## ##    ##  ######  ######## ####  #######  ##    ##  ######
 ##       ##     ## ###   ## ##    ##    ##     ##  ##     ## ###   ## ##    ##
