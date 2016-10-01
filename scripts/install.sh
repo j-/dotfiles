@@ -3,10 +3,10 @@
 # Configure a new system
 
 # Ensure all paths are relative to this script
-cd $(dirname "${0}")
+HERE=$(dirname "${BASH_SOURCE}")
 
 # Copy dotfiles from repo to home dir
-./copy-files.sh ../src "${HOME}"
+"${HERE}"/copy-files.sh "${HERE}"/../src "${HOME}"
 
 echo 'Finished'
 echo 'Run `. ~/.bash_profile` to load profile now'
