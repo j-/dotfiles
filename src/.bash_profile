@@ -212,6 +212,22 @@ edit() {
   $EDITOR "${@:-.}"
 }
 
+# See https://github.com/awalGarg/curl-tap-sh
+tap() {
+  f="$(mktemp)"
+  cat > "$f"
+  $EDITOR "$f" > /dev/tty
+  ee="$?"
+  if [ "$ee" == "0" ]; then
+    cat "$f"
+    rm "$f"
+  else
+    rm "$f"
+    echo "Editor exited with code $ee, and not success exit code" 1>&2
+    exit "$ee"
+  fi
+}
+
 # Add arguments to .gitignore, each on a new line
 git_ignore() {
   local IFS
