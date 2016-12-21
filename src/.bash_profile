@@ -382,6 +382,7 @@ fi
 #### ##    ## ####    ##
 
 
-if [ -e .bash_profile.local ]; then
-  . .bash_profile.local
+# Source local profile if it exists
+if [ -e ~/.bash_profile.local ]; then
+  . ~/.bash_profile.local
 fi
