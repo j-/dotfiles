@@ -111,6 +111,8 @@ path() {
       ;;
     # Replace the PATH entries
     'set') PATH="${*}";;
+    # Remove PATH entirely
+    'clear'|'unset') unset PATH;;
     # Output usage information
     'help')
       echo -n "\
@@ -123,6 +125,7 @@ Usage:
   ${FUNCNAME} append PATH...        Add entries to end of \$PATH
   ${FUNCNAME} remove, rm PATH       Remove entries from \$PATH
   ${FUNCNAME} set PATH...           Replace entries in \$PATH
+  ${FUNCNAME} unset, clear          Remove all entries from \$PATH
 Example:
   ${FUNCNAME} set /usr/sbin /usr/bin /sbin /bin
   ${FUNCNAME} add ~/bin
@@ -367,4 +370,18 @@ if [ -e ~/.ssh/config ]; then
     -o nospace \
     -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d ' ' -f2- | tr ' ' $'\n')" \
     scp sftp ssh
+fi
+
+
+#### ##    ## #### ########
+ ##  ###   ##  ##     ##
+ ##  ####  ##  ##     ##
+ ##  ## ## ##  ##     ##
+ ##  ##  ####  ##     ##
+ ##  ##   ###  ##     ##
+#### ##    ## ####    ##
+
+
+if [ -e .bash_profile.local ]; then
+  . .bash_profile.local
 fi
