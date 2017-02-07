@@ -382,6 +382,11 @@ fi
 #### ##    ## ####    ##
 
 
+# Start SSH Agent if it's not already running
+if [ -z "${SSH_AGENT_PID}" ]; then
+  eval "$(ssh-agent -s)" > /dev/null
+fi
+
 # Source local profile if it exists
 if [ -e ~/.bash_profile.local ]; then
   . ~/.bash_profile.local
