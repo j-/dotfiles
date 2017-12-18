@@ -385,6 +385,9 @@ fi
 # Start SSH Agent if it's not already running
 if [ -z "${SSH_AGENT_PID}" ]; then
   eval "$(ssh-agent -s)" > /dev/null
+
+  # Kill SSH Agent when terminal shuts down
+  trap "kill ${SSH_AGENT_PID}; exit" INT TERM
 fi
 
 # Source local profile if it exists
