@@ -36,6 +36,13 @@ alias gut='git'
 alias got='git'
 alias gt='git'
 
+# Git convenience
+alias add='git add'
+alias add.='git add .'
+alias good='git bisect good'
+alias bad='git bisect bad'
+alias continue='git rebase continue'
+
 # Quiet reset
 alias reset='reset -Q'
 
