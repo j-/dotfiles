@@ -16,6 +16,7 @@
 	oldest = rev-list --max-parents=0 HEAD
 	abort = !git_abort_continue abort
 	continue = !git_abort_continue continue
+	ls = ls-files
 [push]
 	default = current
 [include]
