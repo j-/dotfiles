@@ -41,7 +41,8 @@ alias add='git add'
 alias add.='git add .'
 alias good='git bisect good'
 alias bad='git bisect bad'
-alias continue='git rebase continue'
+alias abort='git_abort_continue abort'
+alias continue='git_abort_continue continue'
 
 # Quiet reset
 alias reset='reset -Q'

@@ -14,6 +14,8 @@
 	cim = commit -m
 	has = branch --list --verbose --contains
 	oldest = rev-list --max-parents=0 HEAD
+	abort = !git_abort_continue abort
+	continue = !git_abort_continue continue
 [push]
 	default = current
 [include]
