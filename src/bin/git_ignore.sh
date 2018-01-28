@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Add arguments to .gitignore, each on a new line
 
