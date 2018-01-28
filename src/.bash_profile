@@ -318,14 +318,6 @@ run() {
 # If set, the value is executed as a command prior to issuing each primary
 # prompt
 PROMPT_COMMAND=set_ps1
-
-# Prioritise editors
-if [ -n "$(command -v subl)" ]; then
-  EDITOR='subl -aw'
-elif [ -n "$(command -v nano)" ]; then
-  EDITOR='nano'
-fi
-
 VISUAL="${EDITOR}"
 
 path append ~/npm/bin
