@@ -20,5 +20,3 @@
 	path = .gitconfig.local
 [credential]
 	helper = cache
-[core]
-	editor = subl -aw
