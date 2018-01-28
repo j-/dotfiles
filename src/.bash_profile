@@ -352,8 +352,9 @@ shopt -s \
 
 
 # Import git completion on linux
-[ -f /usr/share/bash-completion/completions/git ] && \
+if [ -f /usr/share/bash-completion/completions/git ]; then
   . /usr/share/bash-completion/completions/git
+fi
 
 # Make g shortcut behave the same way git does
 if [ -n "$(command -v __git_complete)" ]; then
