@@ -239,13 +239,6 @@ tap() {
   fi
 }
 
-# Add arguments to .gitignore, each on a new line
-git_ignore() {
-  local IFS
-  IFS=$'\n'
-  echo "${*}" >> .gitignore
-}
-
 # Log all commits since last working day
 git_standup() {
   local CURRENT_USER
