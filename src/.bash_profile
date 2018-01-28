@@ -320,8 +320,6 @@ run() {
 PROMPT_COMMAND=set_ps1
 VISUAL="${EDITOR}"
 
-path append ~/npm/bin
-
 
  ######  ##     ##  #######  ########  ########  ######
 ##    ## ##     ## ##     ## ##     ##    ##    ##    ##
