@@ -22,14 +22,19 @@ if [ -e "${git_dir}/CHERRY_PICK_HEAD" ]; then
   exit $?
 fi
 
+# Merging
+if [ -e "${git_dir}/MERGE_HEAD" ]; then
+  if [ "${command}" = 'continue' ]; then
+    git commit
+    exit $?
+  elif [ "${command}" = 'abort' ]; then
+    git merge --abort
+    exit $?
+  fi
+fi
+
 # Rebasing
 if [ -e "${git_dir}/ORIG_HEAD" ]; then
   git rebase "--${command}"
-  exit $?
-fi
-
-# Merging
-if [ -e "${git_dir}/MERGE_HEAD" ]; then
-  git merge "--${command}"
   exit $?
 fi
