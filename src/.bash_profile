@@ -59,6 +59,11 @@ alias ~='cd ~'
 alias please='sudo $(fc -ln -1)'
 alias thanks='sudo -k'
 
+# From https://github.com/modernish/modernish#legibility-aliases
+alias not='! '              # more legible synonym for '!'
+alias so='[ "$?" -eq 0 ]'   # test preceding command's success with
+                            # 'if so;' or 'if not so;'
+
 
 ######## ##     ## ##    ##  ######  ######## ####  #######  ##    ##  ######
 ##       ##     ## ###   ## ##    ##    ##     ##  ##     ## ###   ## ##    ##
