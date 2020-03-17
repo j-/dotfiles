@@ -374,3 +374,15 @@ fi
 if [ -e ~/.bash_profile.local ]; then
   . ~/.bash_profile.local
 fi
+
+
+##        #######   ######     ###    ##
+##       ##     ## ##    ##   ## ##   ##
+##       ##     ## ##        ##   ##  ##
+##       ##     ## ##       ##     ## ##
+##       ##     ## ##       ######### ##
+##       ##     ## ##    ## ##     ## ##
+########  #######   ######  ##     ## ########
+
+
+# Local configuration for this system goes here
