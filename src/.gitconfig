@@ -5,8 +5,6 @@
   l = log --oneline --decorate=short
   b = branch --list --verbose
   git = !git
-  ignore = !git_ignore
-  standup = !git_standup
   root = rev-parse --show-toplevel
   fa = fetch --all --prune
   co = checkout
@@ -14,8 +12,6 @@
   cim = commit -m
   has = branch --list --verbose --contains
   oldest = rev-list --max-parents=0 HEAD
-  abort = !git_abort_continue abort
-  continue = !git_abort_continue continue
   ls = ls-files
 [push]
   default = current
