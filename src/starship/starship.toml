@@ -1,0 +1,20 @@
+# ~/.config/starship.toml
+# https://starship.rs/config/
+
+[character]
+symbol = "$"
+style_success = "white"
+use_symbol_for_status = true
+
+[directory]
+style = "purple"
+
+[git_branch]
+symbol = ""
+style = "yellow"
+
+[jobs]
+disabled = true
+
+[nodejs]
+style = "green"

@@ -5,8 +5,7 @@
 ## Installation
 
 ```sh
-git clone --depth 1 https://github.com/j-/dotfiles && \
-dotfiles/scripts/install.sh
+git clone --depth 1 https://github.com/j-/dotfiles && cd dotfiles && ./install.sh
 ```
 
 Alternatively, with [npm][npm-site]:
