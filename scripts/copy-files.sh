@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ "${#}" = 0 ]]; then
+if [ "$#" -ne 2 ]; then
   echo "Usage: ${0} SOURCE DEST" >&2
   exit 1
 fi
