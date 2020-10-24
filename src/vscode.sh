@@ -1,8 +1,7 @@
 #!/bin/sh
 
-mkdir -p "$APPDATA/Code/User"
-find ./vscode \
-  -mindepth 1 \
-  -maxdepth 1 \
-  -type f \
-  -exec cp -i {} "$APPDATA/Code/User" \;
+# Windows
+[ -d "$APPDATA/Code/User" ] && cp -i ./vscode/settings.json "$APPDATA/Code/User"
+
+# Mac
+[ -d "$HOME/Library/Application Support/Code/User" ] && cp -i ./vscode/settings.json "$HOME/Library/Application Support/Code/User"
