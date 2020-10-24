@@ -6,7 +6,7 @@
 HERE=$(dirname "${BASH_SOURCE}")
 
 # Copy dotfiles from repo to ~
-"${HERE}/copy-files.sh" "${HERE}/../src" "${HOME}"
+(cd "${HERE}" && ./copy-files.sh ../src "${HOME}")
 
 echo 'Finished'
 echo 'Run `. ~/.bash_profile` to load profile now'
