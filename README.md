@@ -7,7 +7,7 @@ Install
 -------
 
 ```sh
-git clone --depth 1 https://github.com/j-/dotfiles && cd dotfiles && ./install.sh
+git clone --depth 1 https://github.com/j-/dotfiles && ./dotfiles/install.sh
 ```
 
 [travis-svg]: https://travis-ci.org/j-/dotfiles.svg
