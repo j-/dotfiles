@@ -13,6 +13,13 @@
   has = branch --list --verbose --contains
   oldest = rev-list --max-parents=0 HEAD
   ls = ls-files
+  ps = push
+  pl = pull
+  # https://coderwall.com/p/jhucga/git-the-last-10-branches-you-ve-worked-on
+  recent = for-each-ref --sort=-committerdate --count=10 --format='%(refname:short)' refs/heads/
+  branchd = branch -d @{-1}
+  branchD = branch -D @{-1}
+  amend = commit --amend --no-edit
 [push]
   default = current
 [include]
