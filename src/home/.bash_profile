@@ -204,5 +204,9 @@ fi
 
 # Local configuration for this system goes here
 . ~/.profile
+
 path add /usr/local/bin
-eval "$(starship init bash)"
+
+if [ -n "$(command -v starship)" ]; then
+  eval "$(starship init bash)"
+fi
