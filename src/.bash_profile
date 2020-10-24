@@ -87,76 +87,6 @@ short_pwd() {
   echo "${PWD}/" | sed "s@^${HOME}/@~/@" | sed 's/\/$//'
 }
 
-# Sets prompt style. This prompt is quite simple, showing the exit status of the
-# previous command, the username and hostname, and the current directory.
-set_ps1() {
-  # Get exit status of previous command
-  EXIT="${?}"
-  # Decorators
-  local OPEN
-  OPEN='\e[30;1m''[''\e[0m'
-  local CLOSE
-  CLOSE='\e[30;1m'']''\e[0m'
-  local SEP
-  SEP=' '
-  # Reset any existing formatting
-  PS1='\e[0m'
-  PS1+='\n'
-  PS1+="${OPEN}"
-  # Print exit status
-  if [ "${EXIT}" = 0 ]; then
-    # Dim white
-    PS1+='\e[30;1m''  0''\e[0m'
-  else
-    # White. Pad with spaces. Always 3 long.
-    PS1+="$(repeat ' ' $(expr 3 - ${#EXIT}))"
-    PS1+="${EXIT}"
-  fi
-  PS1+="${CLOSE}"
-  PS1+="${SEP}"
-  PS1+="${OPEN}"
-  # Detect type of user
-  if [ "${UID}" = 0 ]; then
-    # Red for root
-    PS1+='\e[0;31m'
-  elif sudo -n true &> /dev/null; then
-    # Bright green for sudo
-    PS1+='\e[1;32m'
-  else
-    # Green for other users
-    PS1+='\e[0;32m'
-  fi
-  # Print username
-  PS1+='\u'
-  # Print @ in dim green
-  PS1+='\e[32;2m''@'
-  # Print hostname in green
-  PS1+='\e[0;32m''\H'
-  PS1+="${CLOSE}"
-  PS1+="${SEP}"
-  PS1+="${OPEN}"
-  # Print current directory in magenta
-  PS1+='\e[0;35m''\w'
-  PS1+="${CLOSE}"
-  # Print git status in yellow if available
-  # TODO: Check if __git_ps1 exists, too
-  if [ "$(__git_ps1)" ]; then
-    PS1+="${SEP}"
-    PS1+="${OPEN}"
-    # No need for space, one is added by __git_ps1
-    PS1+='\e[0;33m'"$(__git_ps1 '%s')"
-    PS1+="${CLOSE}"
-  fi
-  # Print $/# on new line
-  PS1+='\e[0m''\n\$ '
-  # Update shell title to match PWD
-  if [ -n "${SSH_TTY}" ]; then
-    set_terminal_title "${USER}@$(hostname): $(short_pwd)"
-  else
-    set_terminal_title "$(short_pwd)"
-  fi
-}
-
 # See https://github.com/awalGarg/curl-tap-sh
 tap() {
   f="$(mktemp)"
@@ -216,9 +146,6 @@ run() {
  ######   ########  #######  ########  ##     ## ########  ######
 
 
-# If set, the value is executed as a command prior to issuing each primary
-# prompt
-PROMPT_COMMAND=set_ps1
 VISUAL="${EDITOR}"
 
 
@@ -277,3 +204,5 @@ fi
 
 # Local configuration for this system goes here
 . ~/.profile
+path add /usr/local/bin
+eval "$(starship init bash)"
