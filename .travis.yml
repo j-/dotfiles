@@ -4,5 +4,5 @@ language: shell
 sudo: required
 
 script:
-  - yes | . ./install.sh
+  - yes | ./install.sh
   - . ~/.bash_profile
