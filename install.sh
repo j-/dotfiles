@@ -1,8 +1,13 @@
 #!/bin/sh
 
+THIS=$(readlink -f "$0")
+DIR=$(dirname "$THIS")
+
 (
-  cd src
-  ./home.sh
-  ./starship.sh
-  ./vscode.sh
+  cd "$DIR/src" || exit 1
+  find . \
+    -mindepth 1 \
+    -maxdepth 1 \
+    -type f \
+    -exec {} \;
 )
