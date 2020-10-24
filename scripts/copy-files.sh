@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [[ "${#}" = 0 ]]; then
   echo "Usage: ${0} SOURCE DEST" >&2

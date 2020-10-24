@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Configure a new system
 
